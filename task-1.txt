@@ -1,4 +1,42 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No: 250541124
+AD-SOYAD: faik dursun 
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+# Ürün listesi: (isim, fiyat, öncelik)
+urunler = [
+    ("Ekmek", 5, 1),
+    ("Süt", 10, 1),
+    ("Peynir", 35, 2),
+    ("Çikolata", 15, 3),
+    ("Yumurta", 20, 1),
+    ("Meyve", 25, 2),
+    ("Kola", 12, 3),
+    ("Et", 80, 2),
+]
+
+# Kullanıcının bütçesi
+butce = float(input("Bütçenizi girin: "))
+
+# Öncelik sırasına göre ürünleri sırala (öncelik 1 olanlar önce)
+urunler.sort(key=lambda x: x[2])
+
+# Sepete eklenen ürünler
+sepet = []
+
+# Alışveriş döngüsü
+for urun in urunler:
+    isim, fiyat, oncelik = urun
+    
+    if butce >= fiyat:
+        sepet.append(isim)
+        butce -= fiyat
+        print(f"{isim} alındı. Kalan bütçe: {butce:.2f} TL")
+    else:
+        print(f"{isim} alınamadı. Yetersiz bütçe.")
+
+# Sonuç
+print("\n--- Alışveriş Özeti ---")
+for urun in sepet:
+    print(f"- {urun}")
+
+print(f"Kalan bütçe: {butce:.2f} TL")
