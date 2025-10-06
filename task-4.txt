@@ -1,4 +1,21 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No:250541124
+AD-SOYAD:FAİK DURSUN 
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+def lego_koy(x, y):
+    print(f"LEGO koyuluyor: ({x}, {y})")
+
+def lego_duvar_yap(x, y, boyut):
+    if boyut == 1:
+        # Taban durum: tek bir LEGO bloğu yerleştir
+        lego_koy(x, y)
+        return
+
+    # Böl: duvarı 4 parçaya ayır (kuadrantlar)
+    yari = boyut // 2
+
+    # Fethet: Her bir parçayı ayrı ayrı inşa et
+    lego_duvar_yap(x, y, yari)                 # Sol üst
+    lego_duvar_yap(x + yari, y, yari)          # Sağ üst
+    lego_duvar_yap(x, y + yari, yari)          # Sol alt
+    lego_duvar_yap(x + yari, y + yari, yari)   # Sağ alt
