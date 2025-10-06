@@ -1,4 +1,54 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No: 250541124
+AD-SOYAD:faik dursun 
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+def el_degeri_hesapla(eldeki_kartlar):
+    puan = 0
+    koz = "♠"
+
+    for kart in eldeki_kartlar:
+        deger = kart[:-1]
+        seri = kart[-1]
+
+        if deger in ['A', 'K', 'Q', 'J', '10']:
+            puan += 2
+        elif deger in ['9', '8']:
+            puan += 1
+
+        if seri == koz:
+            puan += 2  # kozlar daha değerli
+
+    return puan
+
+def ihale_karari(puan):
+    if puan >= 20:
+        return 5
+    elif puan >= 15:
+        return 4
+    elif puan >= 10:
+        return 3
+    else:
+        return 0  # pas
+def rakip_seri_tahmini(rakip_hamleleri):
+    # Örn: {'Ali': ['♦', '♣'], 'Ayşe': ['♠'], 'Mehmet': ['♠', '♥']}
+    oyuncular_seri_tahmini = {}
+
+    for oyuncu, oynanan_kartlar in rakip_hamleleri.items():
+        oynanan_seriler = set(k[-1] for k in oynanan_kartlar)
+        olmayan_seriler = {'♠', '♥', '♦', '♣'} - oynanan_seriler
+        oyuncular_seri_tahmini[oyuncu] = list(olmayan_seriler)
+
+    return oyuncular_seri_tahmini
+def karar_ver(kartlar, oynananlar, rakip_tahminleri):
+    # Basit strateji: Lider değilse en düşük kartı at
+    if not oynananlar:
+        # El senin, lider sensin → en güçlü kartı oyna
+        return max(kartlar, key=lambda x: kart_puani(x))
+    else:
+        # Lider değilsin → en düşük kartı at
+        return min(kartlar, key=lambda x: kart_puani(x))
+
+def kart_puani(kart):
+    deger_sira = {'2':1, '3':2, '4':3, '5':4, '6':5, '7':6, '8':7, '9':8,
+                  '10':9, 'J':10, 'Q':11, 'K':12, 'A':13}
+    return deger_sira.get(kart[:-1], 0)
