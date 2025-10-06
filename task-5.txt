@@ -1,4 +1,41 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No:250541124
+AD-SOYAD: FAİK DURSUN
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Işık > 6
+ve 45° < Kamera Açısı < 135°
+ve Yüz gülümsüyor
+ve Gözler açık
+ve Arka plan temiz
+# Selfie deneme sayısı
+deneme = 0
+maksimum_deneme = 5
+
+while deneme < maksimum_deneme:
+    print(f"\n📸 Deneme #{deneme + 1}")
+
+    # Simülasyon için değerler (Gerçek senaryoda sensörlerden alınabilir)
+    isik = int(input("Işık seviyesi (0-10): "))
+    aci = int(input("Kamera açısı (0-180): "))
+    gulumseme = input("Gülüyor musun? (evet/hayır): ").lower() == "evet"
+    gozler_acik = input("Gözlerin açık mı? (evet/hayır): ").lower() == "evet"
+    arka_plan_temiz = input("Arka plan temiz mi? (evet/hayır): ").lower() == "evet"
+
+    if isik > 6:
+        if 45 < aci < 135:
+            if gulumseme and gozler_acik and arka_plan_temiz:
+                print("✅ MÜKEMMEL SELFIE YAKALANDI!")
+                break
+            else:
+                print("⚠️ Yüz ifadesi veya arka plan uygun değil.")
+        else:
+            print("⚠️ Kamera açısı doğru değil.")
+    else:
+        print("⚠️ Işık yetersiz.")
+    
+    deneme += 1
+
+    if deneme < maksimum_deneme:
+        print("↪️ Tekrar dene...\n")
+    else:
+        print("❌ Maksimum deneme hakkı doldu. Selfie çekilemedi.")
