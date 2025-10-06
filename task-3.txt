@@ -1,4 +1,20 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No:250541124
+AD-SOYAD:faik dursun
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+# Rehberdeki kişiler: (isim, telefon numarası)
+rehber = [
+    ("Zeynep", "0533 111 22 33"),
+    ("Ahmet", "0544 555 66 77"),
+    ("Mehmet", "0505 333 44 55"),
+    ("Ayşe", "0532 777 88 99"),
+    ("Burak", "0555 123 45 67")
+]
+
+# Alfabetik sıralama (isim'e göre)
+rehber_sirali = sorted(rehber, key=lambda kisi: kisi[0])
+
+# Sonuçları yazdır
+print("Alfabetik Sıralanmış Rehber:")
+for isim, numara in rehber_sirali:
+    print(f"{isim}: {numara}")
