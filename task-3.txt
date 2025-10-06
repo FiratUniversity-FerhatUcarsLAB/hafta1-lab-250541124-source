@@ -1,5 +1,5 @@
 Öğrenci No:250541124
-AD-SOYAD:faik dursun
+AD-SOYAD:Faik Dursun
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
 # Rehberdeki kişiler: (isim, telefon numarası)
